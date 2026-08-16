@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>പോർട്ട്ഫോളിയോ | AI ക്രിയേറ്റർ & ഡെവലപ്പർ</title>
+  
+  <!-- Tailwind CSS & Swiper CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+  <!-- Three.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <style>
+    /* Dark Premium Wood & Glass Background */
+    body {
+      background: radial-gradient(circle at center, #1a0f0a 0%, #0d0604 100%);
+      color: #f3f4f6;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Glassmorphism Effect */
+    .glass-card {
+      background: rgba(40, 25, 18, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 200, 150, 0.15);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    /* 3D Ring Carousel (Swiper Coverflow) */
+    .swiper {
+      width: 100%;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 320px;
+      height: 420px;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 165, 0, 0.3);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+      overflow: hidden;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Dynamic Scroll Blur Class */
+    .scroll-blur {
+      transition: filter 0.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease-out;
+      will-change: filter, opacity;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 3D Canvas Background -->
+  <div id="canvas-container"></div>
+
+  <!-- Hero Section (Grand Welcome) -->
+  <section class="scroll-blur h-screen flex flex-col justify-center items-center text-center px-4">
+    <div class="glass-card p-10 rounded-3xl max-w-3xl">
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-300 to-amber-600 mb-4 animate-pulse">
+        സ്വാഗതം
+      </h1>
+      <p class="text-xl md:text-2xl text-amber-100/80 font-light">
+        ഡിജിറ്റൽ സർഗ്ഗാത്മകതയുടെയും സാങ്കേതികവിദ്യയുടെയും ലോകത്തേക്ക് സ്വാഗതം
+      </p>
+      <div class="mt-8">
+        <span class="inline-block animate-bounce text-amber-400 text-2xl">↓ താഴേക്ക് സ്ക്രോൾ ചെയ്യുക</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section (3 Detailed Paragraphs) -->
+  <section class="scroll-blur min-h-screen flex items-center justify-center px-6 py-20">
+    <div class="glass-card p-8 md:p-14 rounded-3xl max-w-4xl space-y-6 leading-relaxed text-lg text-gray-200">
+      <h2 class="text-3xl md:text-4xl font-bold text-amber-400 border-b border-amber-500/30 pb-4">
+        എന്നെക്കുറിച്ച്
+      </h2>
+      
+      <p>
+        എന്റെ ഡിജിറ്റൽ ലോകത്തേക്ക് സ്വാഗതം. ഒരു **AI ക്രിയേറ്റർ, കോഡർ, വീഡിയോ എഡിറ്റർ** എന്നീ നിലകളിൽ സാങ്കേതികവിദ്യയെയും സർഗ്ഗാത്മകതയെയും സമന്വയിപ്പിച്ചാണ് ഞാൻ പ്രവർത്തിക്കുന്നത്. സങ്കീർണ്ണമായ ആശയങ്ങളെ വേഗതയേറിയതും ആകർഷകവുമായ ഡിജിറ്റൽ അനുഭവങ്ങളാക്കി മാറ്റുക എന്നതാണ് എന്റെ ലക്ഷ്യം.
+      </p>
+      
+      <p>
+        ഒരു കോഡർ എന്ന നിലയിൽ, ഉയർന്ന പ്രകടനം കാഴ്ചവെക്കുന്ന വെബ്സൈറ്റുകളും ആപ്ലിക്കേഷനുകളും ഞാൻ നിർമ്മിക്കുന്നു. കൂടാതെ, ആധുനിക എഐ (AI) ടൂളുകൾ ഉപയോഗിച്ച് പുതിയ ആശയങ്ങൾ, ഫ്യൂച്ചറിസ്റ്റിക് ചിത്രങ്ങൾ, ഡിജിറ്റൽ ആർട്ടുകൾ എന്നിവ സൃഷ്ടിക്കുന്നതിൽ ഞാൻ താല്പര്യം കാണിക്കുന്നു.
+      </p>
+      
+      <p>
+        ഒരു വെബ്‌സൈറ്റ് വെറും വിവരങ്ങൾ നൽകാൻ മാത്രമുള്ളതല്ല, മറിച്ച് അത് സന്ദർശിക്കുന്നവർക്ക് മികച്ചൊരു അനുഭവം നൽകുന്നതായിരിക്കണം എന്ന് ഞാൻ വിശ്വസിക്കുന്നു. 3D ലൈറ്റിംഗ്, കണികാ ഫലങ്ങൾ (Particles), ഗ്ലാസ് ഡിസൈൻ എന്നിവ സമന്വയിപ്പിച്ച് മികച്ചൊരു കാഴ്ചാനുഭവം ഇവിടെ ഒരുക്കിയിരിക്കുന്നു.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3D Ring Slideshow Section -->
+  <section class="scroll-blur py-20">
+    <div class="text-center mb-10">
+      <h2 class="text-4xl font-bold text-amber-400">ഗാലറി ഷോകേസ്</h2>
+      <p class="text-gray-400 mt-2">3D റിങ് സ്ലൈഡർ (Gaming, AI Robot & Coding)</p>
+    </div>
+
+    <!-- Swiper 3D Ring Container -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Modern Gaming">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=600&q=80" alt="AI Robot">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Coding">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=600&q=80" alt="AI Art">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <!-- Profile & Scroll-Blurring Footer Section -->
+  <section class="scroll-blur min-h-screen flex flex-col justify-center items-center py-20 px-6">
+    <div class="glass-card p-10 rounded-3xl max-w-md text-center space-y-6 border border-amber-500/40">
+      <div class="relative w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-amber-400 shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Profile Photo" class="w-full h-full object-cover">
+      </div>
+      <div>
+        <h3 class="text-3xl font-bold text-white">നിങ്ങളുടെ പേര്</h3>
+        <p class="text-amber-400 mt-1">AI Creator • Developer • Editor</p>
+      </div>
+      <p class="text-sm text-gray-300">
+        പുതിയ പ്രൊജക്റ്റുകൾക്കായി ബന്ധപ്പെടുക.
+      </p>
+    </div>
+  </section>
+
+  <!-- Swiper JS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script>
+    // 1. Three.js Background & Particles
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 5;
+
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    // Light
+    const pointLight = new THREE.PointLight(0xffb703, 2, 50);
+    pointLight.position.set(2, 3, 4);
+    scene.add(pointLight);
+
+    const ambientLight = new THREE.AmbientLight(0x402010, 1.5);
+    scene.add(ambientLight);
+
+    // Particles
+    const particleCount = 700;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 15;
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    const material = new THREE.PointsMaterial({
+      size: 0.035,
+      color: 0xffb703,
+      transparent: true,
+      opacity: 0.7,
+      blending: THREE.AdditiveBlending
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    // Mouse Interaction
+    let mouseX = 0, mouseY = 0;
+    window.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 0.5;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 0.5;
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      particles.rotation.y += 0.001;
+      particles.rotation.x += 0.0005;
+
+      camera.position.x += (mouseX - camera.position.x) * 0.05;
+      camera.position.y += (-mouseY - camera.position.y) * 0.05;
+      camera.lookAt(scene.position);
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // 2. Swiper 3D Ring Setup
+    var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      loop: true,
+      coverflowEffect: {
+        rotate: 40,
+        stretch: 0,
+        depth: 250,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      }
+    });
+
+    // 3. Multi-Section Scroll Blur Engine
+    const scrollSections = document.querySelectorAll('.scroll-blur');
+    
+    function applyScrollBlur() {
+      const windowHeight = window.innerHeight;
+      const centerScreen = windowHeight / 2;
+
+      scrollSections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const sectionCenter = rect.top + (rect.height / 2);
+        
+        // Calculate distance from screen center
+        const distanceFromCenter = Math.abs(centerScreen - sectionCenter);
+        
+        // Calculate blur amount based on scroll position
+        const maxBlur = 12; // Maximum blur in pixels
+        const blurFactor = Math.min(distanceFromCenter / (windowHeight * 0.6), 1);
+        
+        const currentBlur = blurFactor * maxBlur;
+        const currentOpacity = 1 - (blurFactor * 0.65);
+
+        section.style.filter = `blur(${currentBlur.toFixed(1)}px)`;
+        section.style.opacity = currentOpacity.toFixed(2);
+      });
+    }
+
+    // Scroll listener with smooth performance
+    window.addEventListener('scroll', applyScrollBlur);
+    applyScrollBlur();
+  </script>
+</body>
+</html>
