@@ -1,173 +1,283 @@
  <!DOCTYPE html>
  <html lang="en">
  <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Anwar Sadath | AI Creator & Coder</title>
-     <style>
-         * {
-             margin: 0;
-             padding: 0;
-             box-sizing: border-box;
-             font-family: 'Poppins', system-ui, -apple-system, sans-serif;
-         }
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Portfolio | AI Creator & Developer</title>
+   
+   <!-- Tailwind CSS & Swiper CSS -->
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+   
+   <!-- Three.js Library -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
  
-         body {
-             min-height: 100vh;
-             display: flex;
-             justify-content: center;
-             align-items: center;
-             background: #0f0c20;
-             color: #ffffff;
-             position: relative;
-             overflow-x: hidden;
-             padding: 20px;
-         }
+   <style>
+     /* Dark Premium Wood & Glass Background */
+     body {
+       background: radial-gradient(circle at center, #1a0f0a 0%, #0d0604 100%);
+       color: #f3f4f6;
+       font-family: 'Inter', sans-serif;
+       overflow-x: hidden;
+     }
  
-         /* Background Image with Blur */
-         .bg-image {
-             position: fixed;
-             top: 0;
-             left: 0;
-             width: 100%;
-             height: 100%;
-             background: url('photo.jpg') no-repeat center center/cover;
-             filter: blur(12px) brightness(0.4);
-             transform: scale(1.1);
-             z-index: -2;
-         }
+     #canvas-container {
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100vw;
+       height: 100vh;
+       z-index: -1;
+       pointer-events: none;
+     }
  
-         /* Glowing Light Orbs in Background */
-         .glow-1, .glow-2 {
-             position: fixed;
-             border-radius: 50%;
-             filter: blur(80px);
-             z-index: -1;
-             opacity: 0.6;
-         }
-         .glow-1 {
-             width: 250px;
-             height: 250px;
-             background: #ff007f;
-             top: 10%;
-             left: 10%;
-         }
-         .glow-2 {
-             width: 300px;
-             height: 300px;
-             background: #00d2ff;
-             bottom: 10%;
-             right: 10%;
-         }
+     /* Glassmorphism Effect */
+     .glass-card {
+       background: rgba(40, 25, 18, 0.45);
+       backdrop-filter: blur(16px);
+       -webkit-backdrop-filter: blur(16px);
+       border: 1px solid rgba(255, 200, 150, 0.15);
+       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+     }
  
-         /* Glassmorphism Card Container */
-         .glass-card {
-             background: rgba(255, 255, 255, 0.07);
-             backdrop-filter: blur(16px);
-             -webkit-backdrop-filter: blur(16px);
-             border: 1px solid rgba(255, 255, 255, 0.18);
-             border-radius: 24px;
-             padding: 40px 25px;
-             max-width: 500px;
-             width: 100%;
-             text-align: center;
-             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-         }
+     /* 3D Ring Carousel (Swiper Coverflow Customization) */
+     .swiper {
+       width: 100%;
+       padding-top: 50px;
+       padding-bottom: 50px;
+     }
  
-         /* Small Profile Photo with Glass Effect Border */
-         .profile-img {
-             width: 110px;
-             height: 110px;
-             border-radius: 50%;
-             object-fit: cover;
-             border: 3px solid rgba(255, 255, 255, 0.3);
-             box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
-             margin-bottom: 20px;
-         }
+     .swiper-slide {
+       background-position: center;
+       background-size: cover;
+       width: 320px;
+       height: 420px;
+       border-radius: 20px;
+       border: 2px solid rgba(255, 165, 0, 0.3);
+       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+       overflow: hidden;
+     }
  
-         /* Shimmer / Shuttering Text Effect for Name */
-         .shimmer-text {
-             font-size: 2.2rem;
-             font-weight: 800;
-             letter-spacing: 2px;
-             text-transform: uppercase;
-             background: linear-gradient(90deg, #ffffff 0%, #00d2ff 50%, #ff007f 100%);
-             background-size: 200% auto;
-             color: transparent;
-             -webkit-background-clip: text;
-             background-clip: text;
-             animation: shine 3s linear infinite;
-             margin-bottom: 5px;
-         }
+     .swiper-slide img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+     }
  
-         @keyframes shine {
-             to { background-position: 200% center; }
-         }
- 
-         .welcome-badge {
-             display: inline-block;
-             background: rgba(0, 210, 255, 0.15);
-             border: 1px solid rgba(0, 210, 255, 0.4);
-             color: #00d2ff;
-             padding: 6px 16px;
-             border-radius: 20px;
-             font-size: 0.85rem;
-             font-weight: 600;
-             letter-spacing: 1.5px;
-             margin-bottom: 15px;
-         }
- 
-         .subtitle {
-             font-size: 1rem;
-             color: #e0e0e0;
-             font-weight: 500;
-             margin-bottom: 25px;
-         }
- 
-         /* Note / Bio Box */
-         .bio-box {
-             background: rgba(0, 0, 0, 0.25);
-             border-left: 4px solid #ff007f;
-             border-radius: 12px;
-             padding: 18px;
-             text-align: left;
-             font-size: 0.92rem;
-             line-height: 1.6;
-             color: #d1d5db;
-         }
- 
-         .bio-box span {
-             color: #00d2ff;
-             font-weight: 600;
-         }
-     </style>
+     /* Scroll Blurring Section */
+     .scroll-blur-section {
+       transition: filter 0.3s ease, opacity 0.3s ease;
+     }
+   </style>
  </head>
  <body>
  
-     <!-- Background Photo & Glow Effects -->
-     <div class="bg-image"></div>
-     <div class="glow-1"></div>
-     <div class="glow-2"></div>
+   <!-- 3D Canvas Background -->
+   <div id="canvas-container"></div>
  
-     <!-- Main Glass Card -->
-     <div class="glass-card">
-         <!-- Small Profile Photo -->
-         <img src="photo.jpg" alt="Anwar Sadath" class="profile-img">
+   <!-- Hero Section (Grand Welcome) -->
+   <section class="h-screen flex flex-col justify-center items-center text-center px-4">
+     <div class="glass-card p-10 rounded-3xl max-w-3xl">
+       <h1 class="text-5xl md:text-7xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-300 to-amber-600 mb-4 animate-pulse">
+         WELCOME
+       </h1>
+       <p class="text-xl md:text-2xl text-amber-100/80 font-light">
+         Step into the Digital Realm of Innovation & Creativity
+       </p>
+       <div class="mt-8">
+         <span class="inline-block animate-bounce text-amber-400 text-2xl">↓ Scroll Down</span>
+       </div>
+     </div>
+   </section>
  
-         <div>
-             <span class="welcome-badge">WELCOME TO MY WORLD</span>
-         </div>
+   <!-- About Me Section (3 Detailed Paragraphs) -->
+   <section class="min-h-screen flex items-center justify-center px-6 py-20">
+     <div class="glass-card p-8 md:p-14 rounded-3xl max-w-4xl space-y-6 leading-relaxed text-lg text-gray-200">
+       <h2 class="text-3xl md:text-4xl font-bold text-amber-400 border-b border-amber-500/30 pb-4">
+         About Me & Vision
+       </h2>
+       
+       <p>
+         Welcome to my digital space. I operate at the intersection of technology, creative engineering, and visual story-telling as an **AI Creator, Coder, and Video Editor**. My journey is driven by a passion to transform complex algorithms and bold creative concepts into smooth, high-performance digital experiences. Whether crafting intelligent automation or producing cinematic edits, I aim for perfection in every detail.
+       </p>
+       
+       <p>
+         As a coder, I build sleek, interactive architectures designed to handle complex ideas with lightning-fast efficiency. As an AI creator, I leverage state-of-the-art generative tools to push past traditional creative boundaries—generating futuristic artwork, conceptual visual design, and intelligent workflows that define the next generation of content creation.
+       </p>
+       
+       <p>
+         I believe that a website shouldn't just present information—it should immerse the visitor in an experience. By combining rich textures, ambient lighting, dynamic physics, and interactive 3D elements, my goal is to spark curiosity and offer a glimpse into the endless possibilities when art meets modern code.
+       </p>
+     </div>
+   </section>
  
-         <!-- Premium Name with Shimmer Effect -->
-         <h1 class="shimmer-text">ANWAR SADATH</h1>
-         <p class="subtitle">🚀 AI Creator | Coder | Tech Enthusiast</p>
- 
-         <!-- Big Note / About Me -->
-         <div class="bio-box">
-             Hello & Welcome! I am <span>Anwar Sadath</span>. I build innovative solutions using modern technology, AI tools, and coding. Passionate about creating futuristic digital experiences right from mobile devices to complex web projects.
-         </div>
+   <!-- 3D Ring Slideshow Section -->
+   <section class="py-20">
+     <div class="text-center mb-10">
+       <h2 class="text-4xl font-bold text-amber-400">AI & Tech Showcase</h2>
+       <p class="text-gray-400 mt-2">Interactive 3D Ring Slider</p>
      </div>
  
+     <!-- Swiper 3D Ring Container -->
+     <div class="swiper mySwiper">
+       <div class="swiper-wrapper">
+         <div class="swiper-slide">
+           <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Modern Gaming Concept">
+         </div>
+         <div class="swiper-slide">
+           <img src="https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=600&q=80" alt="AI Robot Tech">
+         </div>
+         <div class="swiper-slide">
+           <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Coding Workstation">
+         </div>
+         <div class="swiper-slide">
+           <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=600&q=80" alt="Abstract AI Art">
+         </div>
+         <div class="swiper-slide">
+           <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" alt="Cyberpunk Gaming Setup">
+         </div>
+       </div>
+       <div class="swiper-pagination"></div>
+     </div>
+   </section>
+ 
+   <!-- Profile & Scroll-Blurring Footer Section -->
+   <section id="footer-section" class="scroll-blur-section min-h-screen flex flex-col justify-center items-center py-20 px-6">
+     <div class="glass-card p-10 rounded-3xl max-w-md text-center space-y-6 border border-amber-500/40">
+       <div class="relative w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-amber-400 shadow-2xl">
+         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Profile Photo" class="w-full h-full object-cover">
+       </div>
+       <div>
+         <h3 class="text-3xl font-bold text-white">Your Name</h3>
+         <p class="text-amber-400 mt-1">AI Creator • Developer • Editor</p>
+       </div>
+       <p class="text-sm text-gray-300">
+         Ready to bring your next ambitious futuristic project to life.
+       </p>
+     </div>
+   </section>
+ 
+   <!-- Swiper JS Script -->
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></script>
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+ 
+   <script>
+     // --------------------------------------------------
+     // 1. Three.js Interactive Particle Background & Lighting
+     // --------------------------------------------------
+     const container = document.getElementById('canvas-container');
+     const scene = new THREE.Scene();
+ 
+     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+     camera.position.z = 5;
+ 
+     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+     renderer.setSize(window.innerWidth, window.innerHeight);
+     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+     container.appendChild(renderer.domElement);
+ 
+     // Warm Wooden/Gold Lighting
+     const pointLight = new THREE.PointLight(0xffb703, 2, 50);
+     pointLight.position.set(2, 3, 4);
+     scene.add(pointLight);
+ 
+     const ambientLight = new THREE.AmbientLight(0x402010, 1.5);
+     scene.add(ambientLight);
+ 
+     // Interactive Particle Array
+     const particleCount = 700;
+     const geometry = new THREE.BufferGeometry();
+     const positions = new Float32Array(particleCount * 3);
+ 
+     for (let i = 0; i < particleCount * 3; i++) {
+       positions[i] = (Math.random() - 0.5) * 15;
+     }
+ 
+     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+ 
+     const material = new THREE.PointsMaterial({
+       size: 0.035,
+       color: 0xffb703,
+       transparent: true,
+       opacity: 0.7,
+       blending: THREE.AdditiveBlending
+     });
+ 
+     const particles = new THREE.Points(geometry, material);
+     scene.add(particles);
+ 
+     // Mouse Interaction
+     let mouseX = 0;
+     let mouseY = 0;
+     window.addEventListener('mousemove', (e) => {
+       mouseX = (e.clientX / window.innerWidth - 0.5) * 0.5;
+       mouseY = (e.clientY / window.innerHeight - 0.5) * 0.5;
+     });
+ 
+     function animate() {
+       requestAnimationFrame(animate);
+ 
+       // Smooth Rotation & Particle Float
+       particles.rotation.y += 0.001;
+       particles.rotation.x += 0.0005;
+ 
+       // React to mouse movement
+       camera.position.x += (mouseX - camera.position.x) * 0.05;
+       camera.position.y += (-mouseY - camera.position.y) * 0.05;
+       camera.lookAt(scene.position);
+ 
+       renderer.render(scene, camera);
+     }
+     animate();
+ 
+     // Window Resize Handler
+     window.addEventListener('resize', () => {
+       camera.aspect = window.innerWidth / window.innerHeight;
+       camera.updateProjectionMatrix();
+       renderer.setSize(window.innerWidth, window.innerHeight);
+     });
+ 
+     // --------------------------------------------------
+     // 2. Swiper 3D Ring Slideshow Setup
+     // --------------------------------------------------
+     var swiper = new Swiper(".mySwiper", {
+       effect: "coverflow",
+       grabCursor: true,
+       centeredSlides: true,
+       slidesPerView: "auto",
+       loop: true,
+       coverflowEffect: {
+         rotate: 40,
+         stretch: 0,
+         depth: 250,
+         modifier: 1,
+         slideShadows: true,
+       },
+       pagination: {
+         el: ".swiper-pagination",
+         clickable: true,
+       },
+       autoplay: {
+         delay: 2500,
+         disableOnInteraction: false,
+       }
+     });
+ 
+     // --------------------------------------------------
+     // 3. Dynamic Scroll Blurring Effect
+     // --------------------------------------------------
+     const footerSection = document.getElementById('footer-section');
+     window.addEventListener('scroll', () => {
+       const rect = footerSection.getBoundingClientRect();
+       const viewportHeight = window.innerHeight;
+       
+       // Calculate scroll progress relative to footer appearance
+       if (rect.top < viewportHeight) {
+         const blurValue = Math.max(0, (rect.top / viewportHeight) * 12);
+         footerSection.style.filter = `blur(${blurValue}px)`;
+         footerSection.style.opacity = `${1 - (blurValue / 20)}`;
+       }
+     });
+   </script>
  </body>
  </html>
- 
